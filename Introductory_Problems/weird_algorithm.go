@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func WeirdAlgo(n int) {
 	fmt.Print(n, " ")
@@ -61,6 +64,29 @@ func IncreasingArray(nums []int) int {
 	return count
 }
 
+func Permutations(n int) {
+	var even, odd []string
+	if n == 2 || n == 3 {
+		fmt.Println("No Solution")
+		return
+	}
+	if n == 1 {
+		fmt.Println(n)
+	}
+	for i := n; i > 0; i-- {
+		if i%2 == 0 {
+			even = append(even, fmt.Sprintf("%d", i))
+		}
+	}
+	for i := n; i > 0; i-- {
+		if i%2 != 0 {
+			odd = append(odd, fmt.Sprintf("%d", i))
+		}
+	}
+	fmt.Println(strings.Join(append(even, odd...), " "))
+
+}
+
 func main() {
 	WeirdAlgo(3)
 
@@ -73,4 +99,6 @@ func main() {
 
 	arr := []int{3, 2, 5, 1, 7}
 	fmt.Println("Increasing array : ", IncreasingArray(arr))
+
+	Permutations(5)
 }
